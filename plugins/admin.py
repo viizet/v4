@@ -1,9 +1,11 @@
+from pyrogram.types import (
+    InlineKeyboardButton, InlineKeyboardMarkup, ForceReply)
 import os
 from pyrogram import Client, filters
 from helper.date import add_date
-from helper.database import uploadlimit , usertype,addpre
-ADMIN = int(os.environ.get("ADMIN", 923943045))
-from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
+from helper.database import uploadlimit, usertype, addpre
+ADMIN = int(os.environ.get("ADMIN", 1484670284))
+log_channel = int(os.environ.get("LOG_CHANNEL", ""))
 
 
 @Client.on_message(filters.private & filters.user(ADMIN) & filters.command(["warn"]))
@@ -12,10 +14,10 @@ async def warn(c, m):
             try:
                 user_id = m.text.split(' ', 2)[1]
                 reason = m.text.split(' ', 2)[2]
-                await m.reply_text("User Notfied Sucessfully ☑️")
+                await m.reply_text("User Notfied Sucessfully")
                 await c.send_message(chat_id=int(user_id), text=reason)
             except:
-                 await m.reply_text("User Not Notfied Sucessfully 😔") 
+                 await m.reply_text("User Not Notfied Sucessfully 😔")
 
 
 @Client.on_message(filters.private & filters.user(ADMIN) & filters.command(["addpremium"]))
@@ -92,8 +94,8 @@ async def cp1(bot,update):
 	uploadlimit(int(user_id),524288000)
 	usertype(int(user_id),"**ACCOUNT DOWNGRADED**")
 	addpre(int(user_id))
-	await update.message.edit("ACCOUNT DOWNGRADED\nThe user can only use 500MB/day from Data qota")
-	await bot.send_message(user_id,"**⚠️ Warning ⚠️**\n\nACCOUNT DOWNGRADED\nYou can only use 500MB/day from Data qota.\nCheck your plan here - /myplan\n\n- Contact Admin <a href='https://t.me/File_Renamernot'>**Viizet**</a>")
+	await update.message.edit("ACCOUNT DOWNGRADED\nThe user can only use 100MB/day from Data qota")
+	await bot.send_message(user_id,"⚠️ Warning ⚠️\n\n- ACCOUNT DOWNGRADED\nYou can only use 500MB/day from Data qota.\nCheck your plan here - /myplan\n- Contact Admin 🦋<a href='https://t.me/mRiderDM'>**LazyDeveloper**</a>🦋")
 
 @Client.on_callback_query(filters.regex('cp2'))
 async def cp2(bot,update):
@@ -103,8 +105,8 @@ async def cp2(bot,update):
 	uploadlimit(int(user_id), 104857600)
 	usertype(int(user_id),"**ACCOUNT DOWNGRADED Lv-2**")
 	addpre(int(user_id))
-	await update.message.edit("ACCOUNT DOWNGRADED \nThe user can only use 100MB/day from Data qota")
-	await bot.send_message(user_id,"**⛔️ Last Warning ⛔️**\n\nACCOUNT DOWNGRADED \nYou can only use 100MB/day from Data qota.\nCheck your plan here - /myplan\n\n- Contact Admin <a href='https://t.me/File_Renamernot'>**Viizet**</a>")
+	await update.message.edit("ACCOUNT DOWNGRADED to Level 2\nThe user can only use 100MB/day from Data qota")
+	await bot.send_message(user_id,"⛔️ Last Warning ⛔️\n\n- ACCOUNT DOWNGRADED to Level 2\nYou can only use 100MB/day from Data qota.\nCheck your plan here - /myplan\n- Contact Admin 🦋<a href='https://t.me/mRiderDM'>**LazyDeveloper**</a>🦋")
 
 @Client.on_callback_query(filters.regex('cp3'))
 async def cp3(bot,update):
@@ -115,15 +117,15 @@ async def cp3(bot,update):
 	usertype(int(user_id),"**POWER CEASED !**")
 	addpre(int(user_id))
 	await update.message.edit("All power ceased from the user.\nThis account has 0 mb renaming capacity ")
-	await bot.send_message(user_id,"🚫 All POWER CEASED 🚫\n\nAll power has been ceased from you \nFrom now you can't rename files using me\nCheck your plan here - /myplan\n\n- Contact Admin <a href='https://t.me/File_Renamernot'>**Viizet**</a>")
+	await bot.send_message(user_id,"🚫 All POWER CEASED 🚫\n\n- All power has been ceased from you \nFrom now you can't rename files using me\nCheck your plan here - /myplan\n- Contact Admin 🦋<a href='https://t.me/mRiderDM'>**LazyDeveloper**</a>🦋")
 
 @Client.on_callback_query(filters.regex('dft'))
 async def dft(bot,update):
 	id = update.message.reply_to_message.text.split("/resetpower")
 	user_id = id[1].replace(" ", "")
-	inlimit = 2147483648
-	uploadlimit(int(user_id), 2147483648)
-	usertype(int(user_id),"Free")
+	inlimit = 1288490188
+	uploadlimit(int(user_id), 1288490188)
+	usertype(int(user_id),"**Free**")
 	addpre(int(user_id))
 	await update.message.edit("Daily Data limit has been reset successsfully.\nThis account has default 1.2 GB renaming capacity ")
-	await bot.send_message(user_id,"Your Daily Data limit has been reset successsfully.\n\nCheck your plan here - /myplan\n- Contact Admin <a href='https://t.me/File_Renamernot'>**Viizet**</a>")
+	await bot.send_message(user_id,"Your Daily Data limit has been reset successsfully.\n\nCheck your plan here - /myplan\n- Contact Admin 🦋<a href='https://t.me/mRiderDM'>**LazyDeveloper**</a>🦋")
